@@ -1,0 +1,19 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[functions."generate-card"]
+  included_files = ["prudent_hero_quiz_assets/The_Risk.png"]
+
+[[redirects]]
+  from = "/api/generate-card"
+  to = "/.netlify/functions/generate-card"
+  status = 200
+
+[[redirects]]
+  from = "/api/email-card"
+  to = "/.netlify/functions/email-card"
+  status = 200
