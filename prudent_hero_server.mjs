@@ -94,13 +94,14 @@ async function generateCard({ image }) {
   console.log(`[generate-card] selfie=${selfieFile.size}B template=${templateFile.size}B`);
 
   const form = new FormData();
-  form.append("model", "gpt-image-2");
+  form.append("model", "gpt-image-1");
   form.append("image[]", selfieFile);
   form.append("image[]", templateFile);
   form.append("prompt", "replace this new person image in that existing card in the same design style , theme and give me.");
-  form.append("size", "1024x1536");
-  form.append("quality", "high");
+  form.append("size", "1024x1024");
+  form.append("quality", "low");
   form.append("output_format", "png");
+  form.append("input_fidelity", "high");
 
   const openaiResponse = await fetch("https://api.openai.com/v1/images/edits", {
     method: "POST",

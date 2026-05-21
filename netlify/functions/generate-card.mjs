@@ -59,13 +59,14 @@ export default async (request) => {
     }
 
     const form = new FormData();
-    form.append("model", "gpt-image-2");
+    form.append("model", "gpt-image-1");
     form.append("image[]", dataUrlToFile(body.image));
     form.append("image[]", await loadCardTemplate());
     form.append("prompt", "replace this new person image in that existing card in the same design style , theme and give me.");
-    form.append("size", "1024x1536");
-    form.append("quality", "high");
+    form.append("size", "1024x1024");
+    form.append("quality", "low");
     form.append("output_format", "png");
+    form.append("input_fidelity", "high");
 
     const r = await fetch("https://api.openai.com/v1/images/edits", {
       method: "POST",

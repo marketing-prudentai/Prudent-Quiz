@@ -1573,12 +1573,12 @@
       return;
     }
     const canvas = $("cameraCanvas");
-    const maxSide = 960;
+    const maxSide = 640;
     const scale = Math.min(maxSide / video.videoWidth, maxSide / video.videoHeight, 1);
     canvas.width = Math.round(video.videoWidth * scale);
     canvas.height = Math.round(video.videoHeight * scale);
     canvas.getContext("2d").drawImage(video,0,0,canvas.width,canvas.height);
-    capturedFaceImage = canvas.toDataURL("image/jpeg",.9);
+    capturedFaceImage = canvas.toDataURL("image/jpeg",.72);
     stopCamera();
     markOnboardingReady("capture");
     setCameraStatus("");
