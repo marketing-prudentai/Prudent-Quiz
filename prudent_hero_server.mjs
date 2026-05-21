@@ -97,7 +97,12 @@ async function generateCard({ image }) {
   form.append("model", "gpt-image-1");
   form.append("image[]", selfieFile);
   form.append("image[]", templateFile);
-  form.append("prompt", "replace this new person image in that existing card in the same design style , theme and give me.");
+  form.append("prompt", [
+    "Take the card design template and place the person from the reference selfie into it, in the same pose and crop where the existing portrait sits.",
+    "Identity lock: preserve every facial feature from the reference selfie exactly — face shape, eyes, eyebrows, nose, mouth, lips, jawline, skin tone, age, hairline, hairstyle, hair color, hair length, facial hair, glasses, and any visible accessories.",
+    "The person on the resulting card must be instantly recognizable as the same person in the reference selfie. Do not beautify, smooth, generalize, age-shift, or invent new features. Do not face-swap, do not generate a generic face.",
+    "Keep the card's existing design, layout, colors, typography, borders, badges, and theme identical to the template — only the person's image inside the card frame is replaced.",
+  ].join(" "));
   form.append("size", "1024x1536");
   form.append("quality", "high");
   form.append("output_format", "png");
