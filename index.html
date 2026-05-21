@@ -1748,7 +1748,7 @@
     img.hidden = true;
     status.hidden = false;
     status.className = "generated-card-status";
-    status.textContent = "Generating your card...";
+    status.textContent = "Rendering your high-quality card... this usually takes 30-60 seconds.";
     try{
       const r = await fetch(CARD_GENERATE_ENDPOINT,{
         method:"POST",
